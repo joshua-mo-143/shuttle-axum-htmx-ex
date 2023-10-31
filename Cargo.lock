@@ -901,11 +901,13 @@ dependencies = [
  "askama_axum",
  "axum",
  "serde",
+ "serde_json",
  "shuttle-axum",
  "shuttle-runtime",
  "shuttle-shared-db",
  "sqlx",
  "tokio",
+ "tokio-stream",
 ]
 
 [[package]]
@@ -2848,6 +2850,7 @@ dependencies = [
  "futures-core",
  "pin-project-lite",
  "tokio",
+ "tokio-util",
 ]
 
 [[package]]
