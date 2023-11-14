@@ -106,10 +106,10 @@ async fn create_todo(
     .await
     .unwrap();
 
-     if let Err(_) =  tx.send(TodoUpdate {
+     if tx.send(TodoUpdate {
 	        mutation_kind: MutationKind::Create,
 	        id: todo.id,
-	    }) {
+	    }).is_err() {
 		eprintln!("Record with ID {} was created but nobody's listening to the stream!", todo.id);
 	}
 
@@ -127,10 +127,10 @@ async fn delete_todo(
         .await
         .unwrap();
 	
-     if let Err(_) =  tx.send(TodoUpdate {
+     if tx.send(TodoUpdate {
 	        mutation_kind: MutationKind::Delete,
 	        id,
-	    }) {
+	    }).is_err() {
 		eprintln!("Record with ID {} was deleted but nobody's listening to the stream!", id);
 	}
 
